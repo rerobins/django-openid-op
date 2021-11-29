@@ -113,7 +113,7 @@ class JWTTools:
             extra_headers = {
                 'kid': sign_key.key_id
             }
-            alg = sign_key._params['alg']
+            alg = sign_key.alg
 
         return generate_jwt_patched(payload,
                                     sign_key,

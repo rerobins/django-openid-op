@@ -226,7 +226,7 @@ class OpenIDClient(models.Model):
         jwks = self.get_keys()
         ret = []
         for key in jwks['keys']:
-            if alg and 'alg' in key._params and key._params['alg'] != alg:
+            if alg and key.alg != alg:
                 continue
             if kid and key.key_id != kid:
                 continue

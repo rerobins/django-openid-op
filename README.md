@@ -58,7 +58,7 @@ django-admin startproject authorization_server
 
 ```python
 
-INSTALLED_APPS += [
+INSTALLED_APPS = ['modeltranslation'] + INSTALLED_APPS + [
     'openid_connect_op',
     'web'
 ]
@@ -84,14 +84,14 @@ google-chrome http://localhost:8000/
 
 ```python
 # added ", include" here
-from django.conf.urls import url, include
+from django.conf.urls import path, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path(r'admin/', admin.site.urls),
     # added these lines
-    url('^', include('openid_connect_op.urls')),
-    url('^', include('django.contrib.auth.urls')),
+    path('', include('openid_connect_op.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 ```
